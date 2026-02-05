@@ -51,7 +51,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      routes: {'/': (context) => const SimpleLocalLoginScreen()},
+      home: SimpleLocalLoginScreen(),
+      routes: {'/login': (context) => const SimpleLocalLoginScreen()},
     );
   }
 }
