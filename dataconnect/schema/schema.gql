@@ -1,0 +1,55 @@
+type User @table {
+  displayName: String!
+  role: String!
+  createdAt: Timestamp!
+  email: String
+  photoUrl: String
+  specialty: String
+}
+
+type Patient @table {
+  firstName: String!
+  lastName: String!
+  dateOfBirth: Date!
+  gender: String!
+  createdAt: Timestamp!
+  contactNumber: String
+  email: String
+  address: String
+  medicalRecordNumber: String
+}
+
+type Appointment @table {
+  patient: Patient!
+  professional: User!
+  appointmentDate: Date!
+  appointmentTime: String!
+  status: String!
+  createdAt: Timestamp!
+  reasonForVisit: String
+  notes: String
+}
+
+type MedicalRecordEntry @table {
+  patient: Patient!
+  professional: User!
+  appointment: Appointment
+  entryType: String!
+  entryDate: Date!
+  createdAt: Timestamp!
+  description: String
+  details: String
+}
+
+type Medication @table {
+  patient: Patient!
+  medicalRecordEntry: MedicalRecordEntry
+  name: String!
+  dosage: String!
+  frequency: String!
+  createdAt: Timestamp!
+  route: String
+  startDate: Date
+  endDate: Date
+  notes: String
+}

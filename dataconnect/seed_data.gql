@@ -1,0 +1,56 @@
+mutation CreateDemoData @auth(level: PUBLIC, insecureReason: "This mutation is used to populate the database with sample data and does not require authentication.") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      email: "demo1@example.com",
+      role: "patient",
+      createdAt: "2024-03-15T12:00:00Z"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      email: "demo2@example.com",
+      role: "professional",
+      createdAt: "2024-03-15T12:00:00Z"
+    }
+  ])
+  patient_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440002",
+      firstName: "Patient",
+      lastName: "One",
+      gender: "Male",
+      dateOfBirth: "1990-01-01",
+      createdAt: "2024-03-15T12:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440003",
+      firstName: "Patient",
+      lastName: "Two",
+      gender: "Female",
+      dateOfBirth: "1992-02-02",
+      createdAt: "2024-03-15T12:00:00Z"
+    }
+  ])
+  appointment_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440004",
+      patientId: "650e8400-e29b-41d4-a716-446655440002",
+      professionalId: "550e8400-e29b-41d4-a716-446655440001",
+      appointmentDate: "2024-03-22",
+      appointmentTime: "10:00",
+      createdAt: "2024-03-15T12:00:00Z",
+      status: "scheduled"
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440005",
+      patientId: "750e8400-e29b-41d4-a716-446655440003",
+      professionalId: "550e8400-e29b-41d4-a716-446655440001",
+      appointmentDate: "2024-03-23",
+      appointmentTime: "11:00",
+      createdAt: "2024-03-15T12:00:00Z",
+      status: "scheduled"
+    }
+  ])
+}
